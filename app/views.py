@@ -54,3 +54,14 @@ def RnaInput(request):
                              { 'form': form },
                              context_instance=RequestContext(request))
 
+def DisplayRepresentations(request, object_id):
+  """This view displays the different representations for the input sequence.
+  """
+  seq_entity = get_object_or_404(Sequence, pk=object_id)
+  return render_to_response('app/representations.html',
+                              { 'title': seq_entity.title,
+                                'seq': seq_entity.raw_seq,
+                                'out_seq': seq_entity.bracketed_str,
+                                'graph': seq_entity.graph_svg },
+                              context_instance=RequestContext(request))
+
