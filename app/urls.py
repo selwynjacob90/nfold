@@ -1,9 +1,13 @@
 from django.conf.urls.defaults import patterns, include, url
 
-from app.views import RnaInput, DisplayRepresentations 
+from app.views import RnaInput, DisplayRepresentations, Home 
 
 
 urlpatterns = patterns('',
+                       url(r'^$',
+                           Home,
+                           name = 'homepage'),
+
                        url(r'^new/$',
                            RnaInput,
                            name = 'input_page'), 
