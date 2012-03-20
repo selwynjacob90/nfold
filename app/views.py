@@ -64,6 +64,6 @@ def DisplayRepresentations(request, object_id):
                                 'out_seq': seq_entity.bracketed_str,
                                 'graph': seq_entity.graph_svg },
                               context_instance=RequestContext(request))
-def home(request):
+def Home(request):
   return render_to_response('base.html')
 
