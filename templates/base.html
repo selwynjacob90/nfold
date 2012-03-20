@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="RNA Visulizatoin prediction nussinov" />
+<meta name="description" content="RNA Secondary Structure Prediction & Visualization" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{% block title %}RNA Secondary Structure Prediction & Visualization{% endblock %}</title>
+<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+<link href="/site_media/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="logo">
+				<h1><a href="/rnavis">NFold</a></h1>
+				<p>Prediction & Visualization of RNA Secondary Structure</p>
+			</div>
+		</div>
+	</div>
+	<!-- end #header -->
+	{% block menu %}
+        <div id="menu">
+		<ul>
+			<li class="current_page_item"><a href="#">Home</a></li>
+			<li><a href="/rnavis/new">Visualize</a></li>
+			<li><a href="#">List</a></li>
+			<li><a href="#">References</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+         {% endblock %}
+	<!-- end #menu -->
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+                                        {% block post %}
+					<div class="post">
+						<h2 class="title"><a href="#">What is Nfold? </a></h2>
+					<!--	<p class="meta">Posted by <a href="#">Someone</a> on February 04, 2011
+							&nbsp;&bull;&nbsp; <a href="#" class="comments">Comments (64)</a> &nbsp;&bull;&nbsp; <a href="#" class="permalink">Full article</a></p> -->
+						<div class="entry">
+							<p><img src="/site_media/images/rna.jpg" width="186" height="186" alt="" class="alignleft border" />Ribonucleic acid or RNA, is one of the three major macromolecules (along with DNA and proteins) essential for all known forms of life.  Like  DNA, RNA is  made  up of a  long  chain of components  called  nucleotides.The sequence  of  nucleotides  allows  RNA  to  encode  genetic  information.Some RNA molecules play an active role in cells by catalyzing biological reactions, controlling gene expression, or sensing and
+communicating responses to cellular signals.One of these  active  processes is  protein synthesis, a universal function</p>
+							<p><strong>Nfold</strong> is a webserver that is developed with the intention to <em>Predict</em> and <em>Visualize</em> the structures of these RNA. It is developed using Python and Django as a web framework. One can get the approximate secondary structure using this web server. It is based on a slight variant of <strong>Nussinov's Algorithm for RNA Folding</strong>.</p>
+						</div>
+					</div>
+                                        {% endblock %}
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<ul>
+						<li>
+							<h2>Nussinov Folding</h2>
+							<p>All the predictions in this server are based on a slightly modified nussinov's algorithm.</p>
+						</li>
+						<li>
+							<h2>Categories</h2>
+							<ul>
+								<li><a href="/rnavis/new">Visualize</a></li>
+								<li><a href="#">List</a></li>
+								<li><a href="#">References</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+<div id="footer">
+	<p>Design by <a href="http://www.freecsstemplates.org/"> CSS Templates</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>
