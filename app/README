@@ -1,0 +1,8 @@
+Nfold is a RNA Secondary structure prediction and visulization software that is built on Django. It uses a slightly modified Nussinov's algorithm.
+You need the following additional python modules for this to run
+  -> markdown
+  -> numpy
+And RNAPlot[2] from Vienna RNA Package
+
+[1] http://ultrastudio.org/en/Nussinov_algorithm
+[2] http://www.tbi.univie.ac.at/~ivo/RNA/
