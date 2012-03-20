@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+  {% block title %} Sequence details {% endblock %}
+
+{% block menu %}
+    <div id="menu">
+      <ul>
+      <li><a href="/rnavis">Home</a></li>
+      <li class="current_page_item"><a href="/rnavis/new">Visualize</a></li>
+      <li><a href="#">List</a></li>
+      <li><a href="#">References</a></li>
+      <li><a href="#">Contact</a></li>
+      </ul>
+     </div>
+ {% endblock %}
+
+{% block post %}
+     <p> Title: <strong>{{ title }} </strong></p>
+     <p> Sequence: <strong>{{ seq }} </strong></p>
+     <p> Bracketed: <span style="font-size:250%;">{{ out_seq }}</span> </p> 
+     {% load markup %}
+     <p>Planar Graph:</p>
+     <p> {{ graph|markdown }}</p>
+{% endblock %}
