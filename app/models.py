@@ -13,7 +13,9 @@ class Sequence(models.Model):
   output_seq = models.CommaSeparatedIntegerField(max_length=500)
   bracketed_str = models.TextField()
   graph_svg = models.TextField()
-  
+  length = models.IntegerField()
+  mat = models.CommaSeparatedIntegerField(max_length=500)
+ 
 
   def __unicode__(self):
      return self.title
