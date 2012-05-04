@@ -89,4 +89,25 @@ def seq_process(request, object_id):
                                 context_instance=RequestContext(request))
 
 def home(request):
+  """ Views for the home page.
+  """
+
   return render_to_response('base.html')
+
+
+def list_page(request):
+  """ Views for the list of sequences page.
+  """
+
+  seq_list = list(Sequence.objects.all())
+  return render_to_response('app/list.html',
+                             { 'seq_list': seq_list },
+                             context_instance=RequestContext(request))
+
+def ref_page(request):
+  """ Views for the references page.
+  """
+
+  return render_to_response('app/ref.html',
+                             context_instance=RequestContext(request))
+
