@@ -8,6 +8,8 @@ import string
 import numpy as np 
 
 
+mat = []
+
 def delta(a,b):
   """ Returns 1 if they are base-pairs, else returns 0.
 
@@ -63,6 +65,7 @@ def matrixFill(sequence):
 
          matrix[i,j]=max(case1,case2,case3)
 
+  mat = matrix
   return matrix
 
 
@@ -80,6 +83,7 @@ def traceback(matrix,sequence,i,j,sq):
         i, j : Current positions in the matrix
 
         sq: The resultant sequence
+
   """
   if i<j:
     if matrix[i,j] == matrix[i+1,j]:
@@ -88,6 +92,7 @@ def traceback(matrix,sequence,i,j,sq):
     
     elif matrix[i,j]== matrix[i,j-1]:
       traceback(matrix, sequence, i, j-1, sq)
+      #no_pair.append([j+1, str(sequence[j])])
       sq[j] = j+1 
 
     elif matrix[i,j] == matrix[i+1,j-1] + delta(sequence[i],sequence[j]):
@@ -118,6 +123,12 @@ def buildSequence(seq):
    for q in xrange(0,len(sequence)):
 	sq = np.zeros(len(sequence[0]))
         sq = traceback(matrixFill(sequence[q]),sequence[q],0,len(sequence[q])-1,sq)
+        mat = matrixFill(sequence[q])
+
    for i in xrange(0,len(sq)):
        output_seq.append(int(sq[i]))
-   return output_seq
+   matrix = []
+   for i in range(0, len(mat)):
+     for j in range(0, len(mat)):
+        matrix.append(int(mat[i][j]))
+   return output_seq, matrix, len(mat)
