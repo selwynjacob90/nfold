@@ -78,7 +78,7 @@ def seq_process(request, object_id):
         mat_out.append(matrix[i])
   print seq_entity.output_seq
 
-  return render_to_response('app/seq_detail.html',
+  return render_to_response('app/representations.html',
                               { 'title': seq_entity.title, 
                                 'seq': seq_entity.raw_seq,
                                 'out_seq': seq_entity.bracketed_str,
