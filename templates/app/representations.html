@@ -1,23 +1,86 @@
+<link href="/site_media/css/table.css" rel="stylesheet" type="text/css" media="screen" />
+<link type="text/css" href="/site_media/css/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
+
+<script type="text/javascript" src="/site_media/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery-ui-1.8.19.custom.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+    // Accordion
+    $("#accordion").accordion({ header: "h3" });
+    $("#accordion").accordion({ collapsible: true });
+    $("#accordion").accordion({ active: false });
+    $("#accordion").accordion({ autoHeight: false });
+
+});
+</script>
+
+
 {% extends "base.html" %}
+
   {% block title %} Sequence details {% endblock %}
 
 {% block menu %}
     <div id="menu">
       <ul>
-      <li><a href="/nfold">Home</a></li>
-      <li class="current_page_item"><a href="/nfold/new">Visualize</a></li>
-      <li><a href="#">List</a></li>
-      <li><a href="#">References</a></li>
+      <li><a href="/rnavis">Home</a></li>
+      <li class="current_page_item"><a href="/rnavis/new">Visualize</a></li>
+      <li><a href="/rnavis/list">List</a></li>
+      <li><a href="/rnavis/references">References</a></li>
       <li><a href="#">Contact</a></li>
       </ul>
      </div>
  {% endblock %}
 
 {% block post %}
-     <p> Title: <strong>{{ title }} </strong></p>
-     <p> Sequence: <strong>{{ seq }} </strong></p>
-     <p> Bracketed: <span style="font-size:250%;">{{ out_seq }}</span> </p> 
-     {% load markup %}
-     <p>Planar Graph:</p>
-     <p> {{ graph|markdown }}</p>
+
+		<h2 class="demoHeaders">Visualizations</h2></br>
+                <p> Title: <strong>{{ title }} </strong></p>
+                <p> Sequence: <strong>{{ seq }} </strong></p></br>
+
+		<div id="accordion">
+			<div>
+				<h3><a href="#">Bracketed</a></h3>
+				<div><span style="font-size:500%;">{{ out_seq }}</span></div>
+			</div>
+			<div>
+				<h3><a href="#">Planar Graph</a></h3>
+				<div>
+                                     {% load markup %}
+                                     {{ graph|markdown }}
+                                </div>
+			</div>
+			<div>
+				<h3><a href="#">Matrix</a></h3>
+				<div>
+                                   <table id="mytable" cellspacing="0">
+                                     <tr>
+                                       <td></td>
+                                         {% for char in seq_list %}
+                                            <td>{{ char }}</td>
+                                         {% endfor %}
+                                     </tr>
+                                     <tr>
+                                         {% for value in mat %}
+                                           {% if forloop.counter|divisibleby:"2" %}
+                                              <td> {{ value }} </td>
+                                           {% else %}
+                                              <td class="alt"> {{ value }}</td>
+                                           {% endif %}
+
+                                           {% if forloop.counter|divisibleby:length %}
+                                               </tr>
+                                               <tr>
+                                           {% endif %}
+
+                                        {% endfor %}
+                                    </table>
+                                  </br>
+                                  <p class="footer">Matrix Representation of the Predicted Structure</p>
+
+                          </div>
+			</div>
+		</div>
+
+
 {% endblock %}
