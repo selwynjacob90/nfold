@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+
+{% block title %} RNA sequence input form {% endblock %}
+
+{% block menu %}
+    <div id="menu">
+      <ul>
+      <li><a href="/rnavis">Home</a></li>
+      <li><a href="/rnavis/new">Visualize</a></li>
+      <li class="current_page_item"><a href="/rnavis/list">List</a></li>
+      <li><a href="/rnavis/references">References</a></li>
+      <li><a href="#">Contact</a></li>
+      </ul>
+     </div>
+ {% endblock %}
+
+
+{% block post %}
+  <h2> List of sequences </h2>
+  </br>
+  <ul style="list-style-type: none;">
+  {% for list_item in seq_list %}
+     <li> - <a href="{{ list_item.get_absolute_url }}">{{ list_item.title }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
